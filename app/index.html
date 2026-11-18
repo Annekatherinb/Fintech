@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Play the Game</title>
+<meta name="theme-color" content="#0B1220"><meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+body{margin:0;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.opt{transition:transform .2s,border-color .2s,background .2s;cursor:pointer}
+.opt:hover{transform:scale(1.02)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+body{margin:0;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}100%{box-shadow:0 0 0 16px rgba(16,185,129,0)}}
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.15s}.d2{animation-delay:.3s}.d3{animation-delay:.45s}
+.grow{transform-origin:left;animation:bar 1.4s cubic-bezier(.2,.7,.2,1) .5s both}
+.pulse{animation:pulse 1.8s ease-out infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+
+body{margin:0;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.5)}100%{box-shadow:0 0 0 22px rgba(255,255,255,0)}}
+@keyframes bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.pulse{animation:pulse 2s ease-out infinite}
+.prog{transform-origin:left;animation:bar 8s linear infinite}
+.hint{animation:bounce 1.6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+
+body{margin:0;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.5)}100%{box-shadow:0 0 0 20px rgba(255,255,255,0)}}
+@keyframes countdown{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+.rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.pulse{animation:pulse 2s ease-out infinite}
+.timer{transform-origin:left;animation:countdown 10s linear both}
+.choice{transition:transform .25s,background .25s}
+.choice:hover{transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+body{margin:0;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes bar{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
+.col{transform-origin:bottom;animation:bar 1.2s cubic-bezier(.2,.7,.2,1) .4s both}
+.card{transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,23,42,.1)}
+.nav a{transition:background .2s}
+.nav a:hover{background:#1F2937}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+body{margin:0;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.45)}100%{box-shadow:0 0 0 14px rgba(16,185,129,0)}}
+.rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.1s}.d2{animation-delay:.22s}.d3{animation-delay:.34s}
+.pulse{animation:pulse 1.8s ease-out infinite}
+.card{transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,23,42,.1)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+body{background:#E5E7EB;margin:0}
+.bar{position:sticky;top:0;z-index:20;background:#0B1220;display:flex;gap:8px;padding:12px 16px;overflow-x:auto;align-items:center}
+.bar .brand{color:#fff;font-weight:700;font-size:15px;margin-right:12px;white-space:nowrap}
+.tab{font-family:inherit;border:0;background:#1F2937;color:#D1D5DB;font-size:13px;font-weight:600;padding:9px 16px;border-radius:99px;cursor:pointer;white-space:nowrap}
+.tab.on{background:#2563EB;color:#fff}
+.screen[hidden]{display:none}
+.stage{display:flex;justify-content:center;padding:32px 16px 64px}
+.stage > div{box-shadow:0 24px 60px rgba(15,23,42,.25)}
+#s-dashboard .stage{padding:0}
+#s-dashboard .stage > div{box-shadow:none;width:100%}
+#s-encuesta .stage > div,#s-perfil .stage > div,#s-feed .stage > div,#s-leccion .stage > div,#s-invertir .stage > div{border-radius:36px}
+
+html,body{margin:0;background:#0B1220}
+.stage{display:block!important;padding:0!important}
+.screen:not(#s-dashboard) .stage>div{max-width:430px;margin:0 auto!important;box-shadow:none!important;border-radius:0!important}
+#s-dashboard .stage>div{border-radius:0!important}
+#reels{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;max-width:430px;margin:0 auto;-webkit-overflow-scrolling:touch}
+.reel{height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;overflow:hidden;background:#0B1220;color:#fff}
+#fnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:80px;background:#111827;border-top:1px solid #1F2937;display:flex;justify-content:space-around;align-items:center;padding:0 8px 12px;box-sizing:border-box;font-size:11px;z-index:5}
+#fnav a{color:#9CA3AF;text-align:center}
+#inst{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:50;background:#2563EB;color:#fff;border:0;border-radius:99px;padding:9px 16px;font:600 13px Inter,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+#inst[hidden]{display:none}
+</style>
+</head>
+<body>
+<section class="screen" id="s-encuesta" data-label="Encuesta" hidden><div class="stage">
+
+<div style="width: 100%; min-height: 100dvh; box-sizing: border-box; background: #F3F4F6; padding: 56px 24px 32px; display: flex; flex-direction: column; color: #0F172A">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<a href="../" aria-label="Volver" style="width: 40px; height: 40px; border-radius: 99px; background: #fff; display: inline-flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+<div style="font-size: 14px; font-weight: 600; color: #6B7280">3 de 10</div>
+</div>
+<div style="margin-top: 20px; height: 8px; border-radius: 99px; background: #E5E7EB; overflow: hidden"><div style="width: 30%; height: 100%; background: #10B981; border-radius: 99px"></div></div>
+<div class="rise" style="margin-top: 40px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #2563EB">Conocimiento</div>
+<h1 class="rise" style="margin: 12px 0 0; font-size: 32px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em">¿Qué tanto sabes de un CDT?</h1>
+<p class="rise" style="margin: 12px 0 0; font-size: 16px; line-height: 1.5; color: #4B5563">Sé honesto. Así armamos la ruta correcta para ti.</p>
+<div style="margin-top: 32px; display: flex; flex-direction: column; gap: 12px">
+
+<button class="opt" type="button" data-i="0" style="text-align: left; font-family: inherit; font-size: 16px; font-weight: 600; color: #0F172A; padding: 18px 20px; border-radius: 20px; background: #FFFFFF; border: 2px solid #FFFFFF; display: flex; align-items: center; justify-content: space-between; min-height: 56px">
+<span>Nunca he oído hablar de él</span>
+<span class="chk" style="display: none; width: 24px; height: 24px; border-radius: 99px; background: #10B981; display: inline-flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg></span>
+</button>
+
+<button class="opt" type="button" data-i="1" style="text-align: left; font-family: inherit; font-size: 16px; font-weight: 600; color: #0F172A; padding: 18px 20px; border-radius: 20px; background: #FFFFFF; border: 2px solid #FFFFFF; display: flex; align-items: center; justify-content: space-between; min-height: 56px">
+<span>Sé que existe, no cómo funciona</span>
+<span class="chk" style="display: none; width: 24px; height: 24px; border-radius: 99px; background: #10B981; display: inline-flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg></span>
+</button>
+
+<button class="opt" type="button" data-i="2" style="text-align: left; font-family: inherit; font-size: 16px; font-weight: 600; color: #0F172A; padding: 18px 20px; border-radius: 20px; background: #D1FAE5; border: 2px solid #10B981; display: flex; align-items: center; justify-content: space-between; min-height: 56px">
+<span>Lo entiendo, nunca he abierto uno</span>
+<span class="chk" style="display: inline-flex; width: 24px; height: 24px; border-radius: 99px; background: #10B981; display: inline-flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg></span>
+</button>
+
+<button class="opt" type="button" data-i="3" style="text-align: left; font-family: inherit; font-size: 16px; font-weight: 600; color: #0F172A; padding: 18px 20px; border-radius: 20px; background: #FFFFFF; border: 2px solid #FFFFFF; display: flex; align-items: center; justify-content: space-between; min-height: 56px">
+<span>Ya tengo o he tenido uno</span>
+<span class="chk" style="display: none; width: 24px; height: 24px; border-radius: 99px; background: #10B981; display: inline-flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg></span>
+</button>
+
+</div>
+<div style="flex: 1"></div>
+<a href="#" data-go="perfil" style="background: #0F172A; color: #fff; font-size: 17px; font-weight: 600; text-align: center; padding: 18px; border-radius: 99px">Continuar</a>
+</div>
+</div></section>
+<section class="screen" id="s-perfil" data-label="Perfil" hidden><div class="stage">
+
+<div style="width: 100%; min-height: 100dvh; box-sizing: border-box; background: #0B1220; color: #fff; padding: 64px 24px 32px; display: flex; flex-direction: column">
+<div class="rise" style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #10B981">Tu diagnóstico</div>
+<h1 class="rise d1" style="margin: 12px 0 0; font-size: 36px; line-height: 1.08; font-weight: 700; letter-spacing: -0.035em">Entras como <span style="color: #60A5FA">Constructor</span>.</h1>
+<p class="rise d2" style="margin: 14px 0 0; font-size: 16px; line-height: 1.5; color: #9CA3AF">Ahorras y ya conoces lo básico. Tu ruta te lleva a invertir con criterio.</p>
+<div class="rise d2" style="margin-top: 32px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div style="flex: 1; background: #1F2937; border-radius: 20px; padding: 16px"><div style="font-size: 12px; color: #9CA3AF">Hoy</div><div style="margin-top: 4px; font-size: 18px; font-weight: 700">Constructor</div></div>
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+<div style="flex: 1; background: #064E3B; border: 2px solid #10B981; border-radius: 20px; padding: 16px"><div style="font-size: 12px; color: #6EE7B7">Al terminar</div><div style="margin-top: 4px; font-size: 18px; font-weight: 700">Inversionista conservador</div></div>
+</div>
+<div class="rise d3" style="margin-top: 28px; background: #111827; border-radius: 24px; padding: 20px">
+<div style="font-size: 14px; font-weight: 600">Tu ruta</div>
+<div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px"><span class="pulse" style="width: 12px; height: 12px; border-radius: 99px; background: #10B981; display: inline-block"></span><span style="font-size: 15px">Crédito en Colombia y en el exterior</span></div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 12px; height: 12px; border-radius: 99px; background: #374151; display: inline-block"></span><span style="font-size: 15px; color: #9CA3AF">CDT y tasas</span></div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 12px; height: 12px; border-radius: 99px; background: #374151; display: inline-block"></span><span style="font-size: 15px; color: #9CA3AF">Riesgo y portafolio</span></div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 12px; height: 12px; border-radius: 99px; background: #374151; display: inline-block"></span><span style="font-size: 15px; color: #9CA3AF">Primera inversión</span></div>
+</div>
+<div style="margin-top: 20px; height: 8px; border-radius: 99px; background: #374151; overflow: hidden"><div class="grow" style="width: 12%; height: 100%; background: #10B981"></div></div>
+</div>
+<div style="flex: 1"></div>
+<a href="#" data-go="feed" style="background: #2563EB; color: #fff; font-size: 17px; font-weight: 600; text-align: center; padding: 18px; border-radius: 99px">Empezar a jugar</a>
+</div>
+</div></section>
+<section class="screen" id="s-feed" hidden><div id="reels"></div>
+<div id="fnav"><a href="#" data-go="feed" style="color:#fff;font-weight:600">Feed</a><a href="#" data-go="leccion">Aprender</a><a href="#" data-go="dashboard">Mercado</a><a href="#" data-go="invertir">Invertir</a><a href="#" data-go="perfil">Perfil</a></div></section>
+<section class="screen" id="s-leccion" hidden><div class="stage"><div style="width:100%;min-height:100dvh;box-sizing:border-box;background:#0B1220;color:#fff;padding:40px 24px 32px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<a href="#" data-go="feed" aria-label="Volver" style="width:40px;height:40px;border-radius:99px;background:#1F2937;display:inline-flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+<div id="ltitle" style="font-size:13px;color:#9CA3AF"></div>
+<div style="background:#064E3B;color:#6EE7B7;font-size:13px;font-weight:700;padding:6px 12px;border-radius:99px">+<span id="lcr">40</span> cr</div></div>
+<div style="margin-top:24px;height:36dvh;min-height:200px;border-radius:24px;background:#1F2937;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
+<video id="v" playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+<div id="vlabel" style="position:absolute;top:12px;left:16px;right:16px;font-size:12px;color:#9CA3AF;text-align:center"></div>
+<button id="playBtn" class="pulse" aria-label="Reproducir" style="position:relative;width:60px;height:60px;border-radius:99px;background:#fff;border:0;display:inline-flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="#0F172A" aria-hidden="true"><path d="M8 5l12 7-12 7z"/></svg></button>
+<div style="position:absolute;left:16px;right:16px;bottom:14px;height:4px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden"><div id="tw" style="width:100%;height:100%"></div></div></div>
+<div id="lab" style="margin-top:24px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#60A5FA"></div>
+<h1 id="ask" style="margin:10px 0 0;font-size:26px;line-height:1.15;font-weight:700;letter-spacing:-.03em"></h1>
+<div id="opts" style="margin-top:20px;display:flex;flex-direction:column;gap:10px"></div>
+<div id="outcome" style="display:none"><div id="oBox" class="rise" style="margin-top:18px;background:#111827;border-radius:20px;padding:16px;border-left:4px solid #10B981">
+<div id="oLabel" style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#10B981"></div>
+<div id="oText" style="margin-top:6px;font-size:15px;line-height:1.45;color:#E5E7EB"></div>
+<button id="replay" style="margin-top:12px;background:none;border:0;color:#60A5FA;font-weight:600;font-size:14px;padding:0">↻ Volver a jugar</button></div></div>
+<div style="flex:1;min-height:20px"></div>
+<a href="#" data-go="dashboard" style="background:#2563EB;color:#fff;font-size:17px;font-weight:600;text-align:center;padding:18px;border-radius:99px">Ir al comparador</a>
+</div></div></section>
+<section class="screen" id="s-dashboard" data-label="Dashboard web" hidden><div class="stage">
+
+<div style="width: 100%; box-sizing: border-box; background: #F3F4F6; display: flex; flex-wrap: wrap; min-height: 860px; color: #0F172A">
+<aside class="nav" style="flex: 0 0 240px; background: #0B1220; color: #fff; padding: 28px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 6px">
+<a href="../" style="display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; padding: 0 12px 20px"><span style="width: 28px; height: 28px; border-radius: 8px; background: #10B981; display: inline-flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0B1220" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></span>Play the Game</a>
+<a href="#" data-go="dashboard" style="padding: 12px; border-radius: 12px; background: #1F2937; font-size: 15px; font-weight: 600">Dashboard</a>
+<a href="#" data-go="leccion" style="padding: 12px; border-radius: 12px; font-size: 15px; color: #D1D5DB">Aprender</a>
+<a href="#" data-go="feed" style="padding: 12px; border-radius: 12px; font-size: 15px; color: #D1D5DB">Feed</a>
+<a href="#" data-go="invertir" style="padding: 12px; border-radius: 12px; font-size: 15px; color: #D1D5DB">Invertir</a>
+<a href="#" data-go="perfil" style="padding: 12px; border-radius: 12px; font-size: 15px; color: #D1D5DB">Mi perfil</a>
+</aside>
+<main style="flex: 999 1 640px; min-width: 0; padding: 32px; box-sizing: border-box">
+<div class="rise" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
+<div><div style="font-size: 14px; color: #6B7280">Hola, bienvenido</div><h1 style="margin: 2px 0 0; font-size: 32px; font-weight: 700; letter-spacing: -0.03em">Tu panel financiero</h1></div>
+<div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+<div style="background: #D1FAE5; color: #047857; font-size: 14px; font-weight: 700; padding: 10px 16px; border-radius: 99px">120 créditos</div>
+<div style="background: #0F172A; color: #fff; font-size: 14px; font-weight: 600; padding: 10px 16px; border-radius: 99px">Racha de 7 días</div>
+</div>
+</div>
+
+<div style="margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+
+<div class="card rise d1" style="background: #fff; border-radius: 24px; padding: 22px">
+<div style="font-size: 13px; color: #6B7280">USD / COP</div>
+<div style="margin-top: 8px; font-size: 28px; font-weight: 700; letter-spacing: -0.03em">—</div>
+<div style="margin-top: 6px; font-size: 13px; font-weight: 600; color: #2563EB">Tasa de cambio en vivo</div>
+</div>
+
+<div class="card rise d1" style="background: #fff; border-radius: 24px; padding: 22px">
+<div style="font-size: 13px; color: #6B7280">Colombia</div>
+<div style="margin-top: 8px; font-size: 28px; font-weight: 700; letter-spacing: -0.03em">—</div>
+<div style="margin-top: 6px; font-size: 13px; font-weight: 600; color: #2563EB">Índice de mercado</div>
+</div>
+
+<div class="card rise d1" style="background: #fff; border-radius: 24px; padding: 22px">
+<div style="font-size: 13px; color: #6B7280">Estados Unidos</div>
+<div style="margin-top: 8px; font-size: 28px; font-weight: 700; letter-spacing: -0.03em">—</div>
+<div style="margin-top: 6px; font-size: 13px; font-weight: 600; color: #10B981">Índice de mercado</div>
+</div>
+
+<div class="card rise d1" style="background: #fff; border-radius: 24px; padding: 22px">
+<div style="font-size: 13px; color: #6B7280">Tu progreso</div>
+<div style="margin-top: 8px; font-size: 28px; font-weight: 700; letter-spacing: -0.03em">64%</div>
+<div style="margin-top: 6px; font-size: 13px; font-weight: 600; color: #10B981">Nivel 2 · CDT y tasas</div>
+</div>
+
+</div>
+
+<div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 16px">
+<div class="rise d2" style="flex: 2 1 420px; background: #fff; border-radius: 24px; padding: 24px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: center"><div style="font-size: 18px; font-weight: 700">Mercado Colombia y EE. UU.</div><div style="font-size: 12px; color: #6B7280">Datos de ejemplo</div></div>
+<div style="margin-top: 24px; height: 200px; display: flex; align-items: flex-end; gap: 10px">
+
+<div class="col" style="flex: 1; height: 40%; border-radius: 8px 8px 0 0; background: #2563EB"></div>
+
+<div class="col" style="flex: 1; height: 52%; border-radius: 8px 8px 0 0; background: #10B981"></div>
+
+<div class="col" style="flex: 1; height: 46%; border-radius: 8px 8px 0 0; background: #2563EB"></div>
+
+<div class="col" style="flex: 1; height: 60%; border-radius: 8px 8px 0 0; background: #10B981"></div>
+
+<div class="col" style="flex: 1; height: 55%; border-radius: 8px 8px 0 0; background: #2563EB"></div>
+
+<div class="col" style="flex: 1; height: 68%; border-radius: 8px 8px 0 0; background: #10B981"></div>
+
+<div class="col" style="flex: 1; height: 62%; border-radius: 8px 8px 0 0; background: #2563EB"></div>
+
+<div class="col" style="flex: 1; height: 74%; border-radius: 8px 8px 0 0; background: #10B981"></div>
+
+<div class="col" style="flex: 1; height: 70%; border-radius: 8px 8px 0 0; background: #2563EB"></div>
+
+<div class="col" style="flex: 1; height: 82%; border-radius: 8px 8px 0 0; background: #10B981"></div>
+
+<div class="col" style="flex: 1; height: 78%; border-radius: 8px 8px 0 0; background: #2563EB"></div>
+
+<div class="col" style="flex: 1; height: 90%; border-radius: 8px 8px 0 0; background: #10B981"></div>
+
+</div>
+<div style="margin-top: 14px; display: flex; gap: 20px; font-size: 13px; color: #4B5563"><span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 3px; background: #2563EB; display: inline-block"></span>Colombia</span><span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 3px; background: #10B981; display: inline-block"></span>Estados Unidos</span></div>
+</div>
+<div class="rise d3" style="flex: 1 1 280px; background: #0F172A; color: #fff; border-radius: 24px; padding: 24px; min-width: 0">
+<div style="font-size: 18px; font-weight: 700">Asistente de IA</div>
+<div style="margin-top: 18px; background: #1F2937; border-radius: 16px; padding: 12px 14px; font-size: 14px; width: fit-content">¿Qué es una tasa efectiva anual?</div>
+<div style="margin-top: 10px; background: #2563EB; border-radius: 16px; padding: 12px 14px; font-size: 14px; line-height: 1.45">Es lo que realmente pagas o ganas en un año, con los intereses compuestos incluidos.</div>
+<div style="margin-top: 18px; background: #1F2937; border-radius: 99px; padding: 12px 16px; font-size: 14px; color: #9CA3AF">Escribe tu pregunta…</div>
+</div>
+</div>
+
+<div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 16px">
+<div class="card" style="flex: 1 1 360px; background: #fff; border-radius: 24px; padding: 24px; min-width: 0">
+<div style="font-size: 18px; font-weight: 700">Comparador de crédito</div>
+<div style="margin-top: 14px; display: flex; flex-direction: column">
+
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid #E5E7EB; font-size: 15px"><span style="font-weight: 600">[Banco A]</span><span style="color: #6B7280">Colombia</span><span style="font-weight: 700; color: #10B981">[tasa]</span></div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid #E5E7EB; font-size: 15px"><span style="font-weight: 600">[Banco B]</span><span style="color: #6B7280">Colombia</span><span style="font-weight: 700; color: #0F172A">[tasa]</span></div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid #E5E7EB; font-size: 15px"><span style="font-weight: 600">[Banco C]</span><span style="color: #6B7280">Exterior</span><span style="font-weight: 700; color: #0F172A">[tasa]</span></div>
+
+</div>
+</div>
+<div class="card" style="flex: 1 1 360px; background: #fff; border-radius: 24px; padding: 24px; min-width: 0">
+<div style="font-size: 18px; font-weight: 700">Simulador de CDT</div>
+<div style="margin-top: 14px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="background: #F3F4F6; border-radius: 16px; padding: 14px"><div style="font-size: 12px; color: #6B7280">Plazo</div><div style="font-size: 20px; font-weight: 700">180 días</div></div>
+<div style="background: #F3F4F6; border-radius: 16px; padding: 14px"><div style="font-size: 12px; color: #6B7280">Retiro</div><div style="font-size: 20px; font-weight: 700">Al vencer</div></div>
+</div>
+<a href="#" data-go="invertir" style="display: block; margin-top: 14px; background: #2563EB; color: #fff; text-align: center; font-size: 15px; font-weight: 600; padding: 14px; border-radius: 99px">Simular y abrir</a>
+</div>
+</div>
+</main>
+</div>
+</div></section>
+<section class="screen" id="s-invertir" data-label="Invertir" hidden><div class="stage">
+
+<div style="width: 100%; min-height: 100dvh; box-sizing: border-box; background: #F3F4F6; padding: 56px 20px 24px; display: flex; flex-direction: column; color: #0F172A">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<h1 style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.03em">Invertir</h1>
+<div style="background: #D1FAE5; color: #047857; font-size: 14px; font-weight: 700; padding: 8px 14px; border-radius: 99px"><span class="crv">120</span> cr</div>
+</div>
+<p style="margin: 6px 0 0; font-size: 15px; color: #4B5563">Usa tus créditos en empresas aliadas.</p>
+<div style="margin-top: 18px; display: flex; gap: 8px">
+<span style="background: #0F172A; color: #fff; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 99px">Todas</span>
+<span style="background: #fff; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 99px">Menor precio</span>
+<span style="background: #fff; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 99px">Mi perfil</span>
+</div>
+<div style="margin-top: 18px; display: flex; flex-direction: column; gap: 12px">
+
+<div class="card rise d1" style="background: #fff; border-radius: 22px; padding: 16px; display: flex; align-items: center; gap: 14px">
+<span style="width: 48px; height: 48px; border-radius: 14px; background: #2563EB; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 18px">A</span>
+<div style="flex: 1; min-width: 0"><div style="font-size: 16px; font-weight: 700">[Empresa A]</div><div style="font-size: 13px; color: #6B7280">[Sector]</div></div>
+<div style="text-align: right"><div style="font-size: 12px; color: #6B7280">Desde</div><div style="font-size: 16px; font-weight: 700; color: #10B981">[precio]</div></div>
+</div>
+
+<div class="card rise d1" style="background: #fff; border-radius: 22px; padding: 16px; display: flex; align-items: center; gap: 14px">
+<span style="width: 48px; height: 48px; border-radius: 14px; background: #10B981; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 18px">B</span>
+<div style="flex: 1; min-width: 0"><div style="font-size: 16px; font-weight: 700">[Empresa B]</div><div style="font-size: 13px; color: #6B7280">[Sector]</div></div>
+<div style="text-align: right"><div style="font-size: 12px; color: #6B7280">Desde</div><div style="font-size: 16px; font-weight: 700; color: #10B981">[precio]</div></div>
+</div>
+
+<div class="card rise d1" style="background: #fff; border-radius: 22px; padding: 16px; display: flex; align-items: center; gap: 14px">
+<span style="width: 48px; height: 48px; border-radius: 14px; background: #1D4ED8; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 18px">C</span>
+<div style="flex: 1; min-width: 0"><div style="font-size: 16px; font-weight: 700">[Empresa C]</div><div style="font-size: 13px; color: #6B7280">[Sector]</div></div>
+<div style="text-align: right"><div style="font-size: 12px; color: #6B7280">Desde</div><div style="font-size: 16px; font-weight: 700; color: #10B981">[precio]</div></div>
+</div>
+
+</div>
+<div class="rise d3" style="margin-top: 16px; background: #0F172A; color: #fff; border-radius: 24px; padding: 18px">
+<div style="font-size: 13px; color: #9CA3AF">Tu inversión</div>
+<div style="margin-top: 4px; display: flex; align-items: center; justify-content: space-between"><div style="font-size: 24px; font-weight: 700">[Empresa A]</div><span class="pulse" style="width: 12px; height: 12px; border-radius: 99px; background: #10B981; display: inline-block"></span></div>
+<div style="margin-top: 12px; display: flex; gap: 8px">
+<span style="background: #1F2937; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 99px">20 cr</span>
+<span style="background: #2563EB; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 99px">50 cr</span>
+<span style="background: #1F2937; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 99px">100 cr</span>
+</div>
+</div>
+<div style="flex: 1"></div>
+<a href="#" data-go="dashboard" style="background: #10B981; color: #04281D; font-size: 17px; font-weight: 700; text-align: center; padding: 18px; border-radius: 99px">Confirmar inversión</a>
+</div>
+</div></section>
+<button id="inst" hidden>📲 Instalar app</button>
+<script>
+/* ================== EDITA AQUÍ ================== */
+
+// REELS del feed: sube tus mp4 verticales (9:16) a la carpeta /reels. Si "src" está vacío se ve el espacio reservado.
+const REELS=[
+  {src:"reels/01.mp4",poster:"",tag:"CDT",title:"El error que cometes al abrir tu primer CDT",text:"En 40 segundos: plazo, tasa y cuándo puedes retirar."},
+  {src:"reels/02.mp4",poster:"",tag:"Crédito",title:"Tasa efectiva anual, sin misterio",text:"Lo que realmente pagas o ganas en un año."},
+  {src:"reels/03.mp4",poster:"",tag:"Divisas",title:"Por qué sube y baja el dólar",text:"Lo esencial para tus decisiones."}
+];
+
+// VIDEO INTERACTIVO. Un video maestro cortado por segundos (o un "src" distinto por escena).
+//  start/end -> segundos que se reproducen · ask+choices -> decisión [{label,next,tone:"green|blue",set:{variable:valor}}]
+//  goto -> condiciones según decisiones previas [{if:{variable:valor},next},{next:"por defecto"}] · next -> pasa directo
+//  final -> resultado (title, label, color, credits) · timeout/default -> segundos para decidir y opción por defecto
+const LESSON={
+  title:"Lección 3 · Crédito", credits:40,
+  master:"lesson/leccion3.mp4",   // "" = probar la lógica sin video (simula el tiempo)
+  intro:"Mira el video y decide.",
+  start:"inicio",
+  nodes:{
+    inicio:{start:0,end:20,ask:"Te aprueban un crédito. ¿Qué haces?",timeout:10,
+      choices:[{label:"Comparar tasas y bancos antes de firmar",next:"compara",tone:"green",set:{comparo:true}},
+               {label:"Aceptar la primera oferta",next:"acepta",tone:"blue",set:{comparo:false}}]},
+    compara:{start:20,end:45,next:"dosAnios"},
+    acepta:{start:45,end:70,next:"dosAnios"},
+    dosAnios:{start:70,end:90,goto:[{if:{comparo:true},next:"finA"},{next:"finB"}]},
+    finA:{start:90,end:110,title:"Tu resultado",label:"Dentro de 2 años",color:"#10B981",credits:40,
+      final:"Comparaste ofertas y encontraste una tasa menor. Tu cuota es más liviana y te queda margen para ahorrar."},
+    finB:{start:110,end:130,title:"Tu resultado",label:"Dentro de 2 años",color:"#60A5FA",credits:10,
+      final:"Pagas más intereses de los necesarios. Aún puedes mejorar tu situación si aprendes a comparar y refinanciar."}
+  }
+};
+/* ================ FIN DE LO EDITABLE ================ */
+
+(function(){
+var $=function(s){return document.querySelector(s)}, $$=function(s){return document.querySelectorAll(s)};
+var S={cr:120};try{S=JSON.parse(localStorage.getItem('ptg'))||S}catch(e){}
+function save(){try{localStorage.setItem('ptg',JSON.stringify(S))}catch(e){}}
+function showCr(){$$('.crv').forEach(function(e){e.textContent=S.cr})}showCr();
+
+// ---- Navegación
+var screens=$$('.screen');
+function go(id){
+  screens.forEach(function(s){s.hidden=s.id!=='s-'+id});
+  if(id!=='leccion')stopLesson();
+  if(id!=='encuesta'){S.seen=1;save()}
+  window.scrollTo(0,0);try{history.replaceState(null,'','#'+id)}catch(e){}
+}
+document.addEventListener('click',function(e){var el=e.target.closest('[data-go]');if(el){e.preventDefault();go(el.getAttribute('data-go'))}});
+
+// ---- Encuesta
+var opts=$$('#s-encuesta .opt');
+opts.forEach(function(o){o.addEventListener('click',function(){opts.forEach(function(x){var on=x===o;
+  x.style.background=on?'#D1FAE5':'#FFFFFF';x.style.borderColor=on?'#10B981':'#FFFFFF';x.querySelector('.chk').style.display=on?'inline-flex':'none'})})});
+
+// ---- Feed de reels
+var PLAYSVG='<svg width="30" height="30" viewBox="0 0 24 24" fill="#0F172A" aria-hidden="true"><path d="M8 5l12 7-12 7z"/></svg>';
+var rb='width:52px;height:52px;border-radius:99px;border:0;background:rgba(255,255,255,.18);display:inline-flex;align-items:center;justify-content:center;transition:background .25s';
+function ic(p){return '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="'+p+'"/></svg>'}
+$('#reels').innerHTML=REELS.map(function(r,i){
+  var media=r.src?'<video src="'+r.src+'"'+(r.poster?' poster="'+r.poster+'"':'')+' loop muted playsinline preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>'
+   :'<div style="position:absolute;left:0;right:0;top:0;bottom:36%;background:#1F2937;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#9CA3AF;font-size:12px"><span class="pulse" style="width:76px;height:76px;border-radius:99px;background:rgba(255,255,255,.95);display:inline-flex;align-items:center;justify-content:center">'+PLAYSVG+'</span>Aquí va tu video · '+r.src+'</div>';
+  if(!r.src)media=media.replace('Aquí va tu video · ','Aquí va tu video · reels/0'+(i+1)+'.mp4');
+  return '<article class="reel">'+media+
+   '<div style="position:absolute;inset:0;background:linear-gradient(transparent 45%,#0B1220 80%);pointer-events:none"></div>'+
+   '<div style="position:absolute;left:20px;right:20px;top:20px;height:4px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden"><div class="prog rp" style="width:100%;height:100%;background:#fff"></div></div>'+
+   '<div style="position:absolute;left:20px;right:20px;top:40px;display:flex;justify-content:space-between;align-items:center"><div style="font-size:18px;font-weight:700;letter-spacing:-.02em">Play the Game</div><div style="background:#064E3B;color:#6EE7B7;font-size:13px;font-weight:700;padding:6px 12px;border-radius:99px"><span class="crv">120</span> cr</div></div>'+
+   '<div style="position:absolute;right:16px;bottom:250px;display:flex;flex-direction:column;gap:20px;align-items:center"><button class="lk" aria-label="Me gusta" style="'+rb+'">'+ic('M12 21s-8-5.2-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 5.8-8 11-8 11z')+'</button><button class="sv" aria-label="Guardar" style="'+rb+'">'+ic('M6 4h12v17l-6-4-6 4z')+'</button><button aria-label="Preguntar a la IA" style="'+rb.replace('rgba(255,255,255,.18)','#2563EB')+'">'+ic('M12 3v3M12 18v3M3 12h3M18 12h3M7 7l2 2M15 15l2 2M17 7l-2 2M9 15l-2 2')+'</button></div>'+
+   '<div class="rise" style="position:absolute;left:20px;right:84px;bottom:190px"><span style="background:#2563EB;font-size:12px;font-weight:700;padding:6px 12px;border-radius:99px">'+r.tag+'</span><div style="margin-top:14px;font-size:26px;line-height:1.15;font-weight:700;letter-spacing:-.03em">'+r.title+'</div><div style="margin-top:10px;font-size:14px;line-height:1.45;color:#D1D5DB">'+r.text+'</div></div>'+
+   '<div style="position:absolute;left:20px;right:20px;bottom:96px"><a href="#" data-go="leccion" style="display:block;background:#fff;color:#0F172A;text-align:center;font-size:16px;font-weight:600;padding:16px;border-radius:99px">Profundizar en el curso</a><div class="hint" style="margin-top:12px;text-align:center;font-size:12px;color:#9CA3AF">Desliza para el siguiente</div></div></article>'}).join('');
+$('#reels').addEventListener('click',function(e){
+  var b=e.target.closest('.lk,.sv');
+  if(b){var on=b.dataset.on!=='1';b.dataset.on=on?'1':'';b.style.background=on?(b.classList.contains('lk')?'#10B981':'#2563EB'):'rgba(255,255,255,.18)';return}
+  var v=e.target.closest('.reel').querySelector('video');if(v&&!e.target.closest('a'))v.muted=!v.muted});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target.querySelector('video');if(!v)return;
+  if(e.isIntersecting&&!e.target.closest('[hidden]')){v.play().catch(function(){})}else v.pause()})},{threshold:.6});
+$$('.reel').forEach(function(r){io.observe(r);var v=r.querySelector('video'),p=r.querySelector('.rp');
+  if(v){p.classList.remove('prog');p.style.transformOrigin='left';p.style.transform='scaleX(0)';v.ontimeupdate=function(){if(v.duration)p.style.transform='scaleX('+v.currentTime/v.duration+')'}}});
+
+// ---- Video interactivo (motor de decisiones)
+var L=LESSON,v=$('#v'),flags={},cur,tm,fk,done,lock;
+$('#ltitle').textContent=L.title;$('#lcr').textContent=L.credits;
+function idle(){$('#lab').textContent='Lección';$('#lab').style.color='#9CA3AF';$('#ask').textContent=L.intro;$('#opts').innerHTML='';$('#tw').innerHTML='';$('#outcome').style.display='none';$('#vlabel').textContent=L.master?'':'Sin video: se simula el tiempo';$('#playBtn').style.display='inline-flex'}
+function stopLesson(){clearInterval(fk);clearTimeout(tm);try{v.pause()}catch(e){}}
+function begin(){flags={};$('#playBtn').style.display='none';$('#outcome').style.display='none';play(L.start)}
+$('#playBtn').onclick=begin;$('#replay').onclick=begin;
+function seek(t){v.readyState>0?v.currentTime=t:v.addEventListener('loadedmetadata',function(){v.currentTime=t},{once:true})}
+function play(id){
+  var n=L.nodes[id],src=n.src||L.master,t0=n.start||0;cur=id;done=false;clearInterval(fk);clearTimeout(tm);
+  $('#opts').innerHTML='';$('#tw').innerHTML='';
+  if(src){lock=true;if(!v.src||!v.src.endsWith(src))v.src=src;seek(t0);v.play().catch(function(){})}
+  else{var d=Math.min(n.end!=null?n.end-t0:5,5),t=0;$('#vlabel').textContent='Escena «'+id+'» · simulando '+d+'s';
+    fk=setInterval(function(){t+=.25;if(t>=d)end()},250)}
+}
+v.onseeked=function(){lock=false};
+v.ontimeupdate=function(){var n=L.nodes[cur];if(n&&!lock&&!done&&n.end!=null&&v.currentTime>=n.end)end()};
+v.onended=function(){if(!done)end()};
+function end(){
+  var n=L.nodes[cur];if(done)return;done=true;clearInterval(fk);
+  if(n.choices){v.pause();ask(n)}
+  else if(n.goto){var g=n.goto.find(function(x){return !x.if||Object.keys(x.if).every(function(k){return flags[k]===x.if[k]})});play(g.next)}
+  else if(n.next)play(n.next);else finish(n);
+}
+var TONE={green:['#064E3B','#10B981'],blue:['#1E3A8A','#60A5FA']};
+function ask(n){
+  $('#lab').textContent='Tu decisión';$('#lab').style.color='#60A5FA';$('#ask').textContent=n.ask;
+  $('#opts').innerHTML=n.choices.map(function(c,i){return '<button class="choice" data-i="'+i+'" style="text-align:left;border:2px solid #1F2937;background:#1F2937;color:#fff;font-size:16px;font-weight:600;padding:16px 18px;border-radius:18px;min-height:56px">'+c.label+'</button>'}).join('');
+  var T=n.timeout||10;$('#tw').innerHTML='<div class="timer" style="width:100%;height:100%;background:#10B981;animation-duration:'+T+'s"></div>';
+  $('#opts').onclick=function(e){var b=e.target.closest('.choice');if(b)pick(n,+b.dataset.i)};
+  tm=setTimeout(function(){pick(n,n.default||0)},T*1000);
+}
+function pick(n,i){
+  clearTimeout(tm);var c=n.choices[i],t=TONE[c.tone]||TONE.green,b=$('#opts').children[i];
+  if(b){b.style.background=t[0];b.style.borderColor=t[1]}
+  Object.assign(flags,c.set||{});setTimeout(function(){play(c.next)},450);
+}
+function finish(n){
+  v.pause();S.cr+=n.credits||0;save();showCr();$('#tw').innerHTML='';$('#opts').innerHTML='';
+  $('#lab').textContent=n.title||'Resultado';$('#lab').style.color=n.color||'#10B981';$('#ask').textContent='Así termina tu historia';
+  $('#oBox').style.borderLeftColor=n.color||'#10B981';$('#oLabel').style.color=n.color||'#10B981';
+  $('#oLabel').textContent=(n.label||'Resultado')+' · +'+(n.credits||0)+' cr';$('#oText').textContent=n.final||'';$('#outcome').style.display='block';
+}
+idle();
+
+// ---- PWA: instalar + service worker
+var dip,st=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+addEventListener('beforeinstallprompt',function(e){e.preventDefault();dip=e;if(!st)$('#inst').hidden=false});
+if(/iphone|ipad/i.test(navigator.userAgent)&&!st){$('#inst').hidden=false;$('#inst').onclick=function(){alert('En iPhone: toca Compartir y luego "Añadir a pantalla de inicio".')}}
+$('#inst').addEventListener('click',function(){if(dip){dip.prompt();dip=null;$('#inst').hidden=true}});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(function(){});
+
+var ok={encuesta:1,perfil:1,feed:1,leccion:1,dashboard:1,invertir:1},h=location.hash.slice(1);
+go(ok[h]?h:(S.seen?'feed':'encuesta'));
+})();
+
+</script>
+</body>
+</html>
