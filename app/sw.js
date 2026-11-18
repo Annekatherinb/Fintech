@@ -1,4 +1,4 @@
-const C='ptg-v1',A=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png'];
+const C='ptg-v4',A=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(A))));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x))))));
 // Red primero (para ver tus cambios); videos nunca se guardan en caché
